@@ -1,5 +1,6 @@
-import Link from 'next/link'; // Linkコンポーネントインポートする
+import Link from 'next/link'; // Linkコンポーネントをインポート
 import Head from 'next/head'; // Headコンポーネントをインポート
+import Script from 'next/script'; // Scriptコンポーネントをインポート
 
 // ファイル呼び出し時のエントリーポイント
 export default function FirstPost() {
@@ -11,6 +12,14 @@ export default function FirstPost() {
       <Head>
         <title>First Post</title>
       </Head>
+      {/* facebookのスクリプト読み込み */}
+      <Script
+        src="https://connect.facebook.net/en_US/sdk.js"
+        strategy="lazyOnload"
+        onLoad={() =>
+          console.log(`script loaded correctly, window.FB has been populated`)
+        }
+      />
       <h1>First Post</h1>
       <h2>
         {/* リンク先をhrefで指定する */}
