@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'; // 追加
 
 export default function Home() {
   return (
@@ -9,8 +10,13 @@ export default function Home() {
       </Head>
 
       <main>
+        {/* h1タグのみ修正 */}
         <h1 className="title">
-          Lean <a href="https://nextjs.org">Next.js!</a>
+          {/* HTML中にスペースを明示的に入れて改行したい時は{' '}のように書く */}
+          Read{' '}
+          <Link href="/posts/first-post">
+            <a>this page!</a>
+          </Link>
         </h1>
 
         <p className="description">
