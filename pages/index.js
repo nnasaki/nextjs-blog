@@ -1,7 +1,8 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import Layout, { siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
-import { getSortedPostsData } from '../lib/posts'; // 新たにインポート
+import { getSortedPostsData } from '../lib/posts';
 
 // パラメーターに allPostsData を追加
 export default function Home({ allPostsData }) {
@@ -23,12 +24,15 @@ export default function Home({ allPostsData }) {
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
+            // id と date と title を渡して、リンクを生成する
             <li className={utilStyles.listItem} key={id}>
-              {title}
+              <Link href={`/posts/${id}`}>
+                <a>{title}</a>
+              </Link>
               <br />
-              {id}
-              <br />
-              {date}
+              <small className={utilStyles.lightText}>
+                {date}
+              </small>
             </li>
           ))}
         </ul>
